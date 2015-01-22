@@ -1,0 +1,7 @@
+function [ output_args ] = mean_flow( input_args )
+%MEAN_FLOW Perform a mean filter on optical flow to smooth out the
+%direction and magnitude of each point in a dense flow 
+
+
+end
+

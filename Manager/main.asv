@@ -1,0 +1,39 @@
+function main( input_args )
+%MAIN Starts the cycle by genrating a set of particles that are placed atop
+%optical flow fields; optical flow fields are post-processed 
+
+frame_height = 100;
+frame_width = 100;
+frame_count = 100;
+% Generate a set of particles
+particles = {};
+no_particles = 10;
+
+%Generate particle starting locations
+p_distribution = [rand(10,1) * frame_height,rand(10,1) * frame_width];
+
+for i = 1: no_particles
+    particles = add_particle(particles,p_distribution(i,:));
+end
+
+
+figure;
+for i = 1: no_particles
+    p = particles{i};
+    point = get_position(p);
+    scatter(point(1),point(2)); hold on
+end
+
+while f < frame_count 
+
+% Generate Optical Flow Fields
+U = rand(frame_height,frame_width);
+V = rand(frame_height,frame_width);
+
+% Apply Smoothing
+
+% Move Particles
+f = f + 1;
+end
+end
+
