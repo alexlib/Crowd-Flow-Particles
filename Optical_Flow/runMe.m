@@ -16,7 +16,7 @@ clear in;
 % synthetic video sequence(created on the fly), or load a video through a
 % video file (such as 'LipVid.avi'), or to capture video from a connected
 % camera. 
- in.movieType = 'lipVid.avi'; %assumes a file 'LipVid.avi' in current folder. 
+ in.movieType = 'Street1.avi'; %assumes a file 'LipVid.avi' in current folder. 
                                % NOTE: variable framerate videos not supported
 
 % in.movieType = 'camera';    %assumes a camera available in the system.
@@ -28,11 +28,11 @@ clear in;
 
 %%% argument 'method'      %%%
 %%%  optical flow method.  %%%
-% in.method = 'LK';             %% traditional, explicit Lucas and Kanade
+ in.method = 'LK';             %% traditional, explicit Lucas and Kanade
  in.method = 'flow1';          %% Tikhonov-regularized and vectorized method
 
 %%% full resolution streamlined optical flow functions, color coded visualization
-% in.method = 'flow1Full';      %% flow2 in dedicated m-file, with high resolution output
+ in.method = 'flow1Full';      %% flow2 in dedicated m-file, with high resolution output
 
 %%% There are 2 other options for 'method' that gives no flow:
 % in.method = 'gradient';  %Displays the gradient values
@@ -44,7 +44,7 @@ clear in;
 %%% scale. coarse scale gives better stability to large motions, but at the
 %%% cost of loosing fine scale information in the video. It determines the
 %%% width and height of dx, dy, dt
- in.bFineScale = 0;
+ in.bFineScale = 1;
 
 %%%%%%%% argument 'tIntegration'  %%%%%%%%%%%%%%
 %%% the amount of temporal integration. This is done by 1st order

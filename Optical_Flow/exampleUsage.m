@@ -15,13 +15,13 @@ clear in;
 % video file (such as 'LipVid.avi'), or to capture video from a connected
 % camera(requires the image acquisition toolbox). 
 
-% in.movieType = 'lipVid.avi'; %assumes a file 'LipVid.avi' in current folder. 
+ in.movieType = 'lipVid.avi'; %assumes a file 'LipVid.avi' in current folder. 
 %%% NOTE: variable framerate videos not supported
 % in.movieType = 'camera'; %assumes a camera available in the system.
 % in.camID        = 1;        %(default 1) if several connected cameras, select ID
 % NOTE: some systems have virtual cameras installed. Try to choose different
 % values for camID, and see if you get better performance. 
-in.movieType = 'synthetic'; %generate synthetic video
+%in.movieType = 'synthetic'; %generate synthetic video
 
 %%%%settings for the synthetic sequence
 %speed of motion of the patterns generated. This affects the speed of
@@ -43,7 +43,7 @@ in.syntSettings.flickerFreq  = 0.8;  %frequency of flicker (in range (0,Inf])
 in.syntSettings.noiseWeight = 0.3;    %signal to noise weight (in range [0,1])
 
 
-% in.vidRes   = [100 100];  %video resolution, for camera and synthetic
+ in.vidRes   = [100 100];  %video resolution, for camera and synthetic
                             % input
 % resolution of the estimated flow (only valid for the lower resolution
 % methods, where vectors(quiver) are used for visualization):
@@ -53,8 +53,8 @@ in.syntSettings.noiseWeight = 0.3;    %signal to noise weight (in range [0,1])
 %%%%% argument 'method'      %%%%%%%%
 %%%%% optical flow methods(low res)  %%%%%%%
 % in.method = 'LK';             %% traditional, explicit Lucas and Kanade
-% in.method = 'flow1';          %% Tikhonov-regularized and vectorized method
-in.method = 'synthetic';      %% generate (Lo Res)groundtruth motion for synthetic video
+ in.method = 'flow1';          %% Tikhonov-regularized and vectorized method
+%in.method = 'synthetic';      %% generate (Lo Res)groundtruth motion for synthetic video
 
 %%%%%% full resolution streamlined functions, color coding
 % in.method = 'flow1Full';      %% flow2 in dedicated m-file, with high resolution output

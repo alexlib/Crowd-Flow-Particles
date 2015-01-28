@@ -84,7 +84,7 @@ function [dx, dy, dt, U, V, pathToSave] = vidProcessing(in)
 %%% scale. coarse scale gives better stability to large motions, but at the
 %%% cost of loosing fine scale information in the video. It determines the
 %%% width and height of dx, dy, dt
-% in.bFineScale = 1;
+ in.bFineScale = 1;
 
 %%%%%%%% argument 'tIntegration'  %%%%%%%%%%%%%%
 %%% the amount of temporal integration. This is done by 1st order
@@ -161,6 +161,7 @@ switch in.method
         [myHandles,pathToSave] = setupGraphicsScript(in,curIm,dx,dy,dt);
     case 'flow1full'
         [U, V] = DoFlow1Full(dx,dy,dt,in.tIntegration);
+        size(U)
         checkFlowOutput(U, V);%sanity check on flow
         [myHandles,pathToSave] = setupGraphicsScript(in,curIm,U,V);
     case 'syntheticfull'
@@ -187,6 +188,7 @@ switch in.method
         [myHandles,pathToSave] = setupGraphicsScript(in,curIm,U,V);
 
 end
+
 %%%%%% MAIN LOOP, runs until user shuts down the figure  %%%%%
 while ishandle(myHandles.figH) && t <= in.endingTime
     tic; %time each loop iteration;
@@ -206,12 +208,13 @@ while ishandle(myHandles.figH) && t <= in.endingTime
             updateGraphicsScript(in,myHandles,curIm,dx,dy,dt);
         case 'flow1full'
             [U, V] = DoFlow1Full(dx,dy,dt,in.tIntegration);
-            updateGraphicsScript(in,myHandles,curIm,U,V);
+                       updateGraphicsScript(in,myHandles,curIm,U,V);
         case 'hsfull'
             [U, V] = DoFlowHS(dx, dy, dt,U, V);
             updateGraphicsScript(in,myHandles,curIm,U,V);
         case 'flow1'
             [U, V] = DoFlow1(dx,dy,dt,in.tIntegration);
+            size(U)
             updateGraphicsScript(in,myHandles,curIm,U,V);            
         case 'lk'
             [U, V] = DoFlowLK(dx, dy, dt,in.flowRes);
